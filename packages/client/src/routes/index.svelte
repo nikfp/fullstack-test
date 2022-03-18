@@ -21,3 +21,9 @@ import { onMount } from "svelte";
 <h2>Time is: {time}</h2>
 <hr>
 <p>This was a change that Shaye made</p>
+
+<style>
+  h1 h2 {
+    color: red;
+  }
+</style>
