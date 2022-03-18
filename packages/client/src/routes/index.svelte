@@ -14,16 +14,16 @@ import { onMount } from "svelte";
   })
 </script>
 
-<h1>Welcome to SvelteKit</h1>
+<h1 class="red">Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
 <hr>
-<h2>Time is: {time}</h2>
+<h2 class="red">Time is: {time}</h2>
 <hr>
 <p>This was a change that Shaye made</p>
 
 <style>
-  h1 h2 {
+  .red {
     color: red;
   }
 </style>
