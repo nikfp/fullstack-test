@@ -20,4 +20,4 @@ import { onMount } from "svelte";
 <hr>
 <h2>Time is: {time}</h2>
 <hr>
-<p>This was a change that I made</p>
+<p>This was a change that Shaye made</p>
