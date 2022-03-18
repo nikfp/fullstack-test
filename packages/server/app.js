@@ -15,7 +15,7 @@ app.use(cors({ origin: "*" }));
 
 app.use("/", (req, res, next) => {
   const date = new Date();
-  const resString = `Current time is ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  const resString = `From Heroku container: Current time is ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   res.status(200).json({ timestamp: resString }).send();
 });
 
