@@ -2,6 +2,14 @@ FROM node:latest
 
 RUN npm install -g pnpm
 
+WORKDIR /shared
+
+COPY packages/shared/package.json .
+
+RUN pnpm install
+
+COPY packages/shared/index.js .
+
 WORKDIR /app
 
 COPY packages/server/package.json .
