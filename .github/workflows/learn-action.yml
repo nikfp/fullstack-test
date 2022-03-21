@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - "packages/server/**"
+      - "Dockerfile"
 
 # Your workflows jobs.
 jobs:
