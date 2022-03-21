@@ -8,6 +8,8 @@ on:
     paths:
       - "packages/server/**"
       - "./Dockerfile"
+  workflow_dispatch:
+    branches: [main]
 
 # Your workflows jobs.
 jobs:
