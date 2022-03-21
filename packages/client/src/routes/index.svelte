@@ -1,6 +1,6 @@
 <script lang="ts">
 import { onMount } from "svelte";
-
+import sayMyName from 'shared';
 
   const srvaddr = process.env.API_SRV;
 
@@ -10,6 +10,7 @@ import { onMount } from "svelte";
     const result = await fetch(srvaddr);
     const body = await result.json();
     console.log(body);
+    console.log(sayMyName());
     time = body.timestamp;
   })
 </script>

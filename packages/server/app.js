@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import sayMyName from "shared";
 
 // import dotenv from "dotenv";
 
@@ -16,7 +17,8 @@ app.use(cors({ origin: "*" }));
 app.use("/", (req, res, next) => {
   const date = new Date();
   const resString = `Heroku container with Shaye: Current time is ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-  res.status(200).json({ timestamp: resString }).send();
+  const newName = sayMyName();
+  res.status(200).json({ timestamp: resString, sayName: newName }).send();
 });
 
 app.listen(port, () => {

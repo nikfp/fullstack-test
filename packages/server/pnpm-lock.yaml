@@ -5,12 +5,14 @@ specifiers:
   dotenv: ^16.0.0
   express: ^4.17.3
   nodemon: ^2.0.15
+  shared: workspace:../shared
 
 dependencies:
   cors: 2.8.5
   dotenv: 16.0.0
   express: 4.17.3
   nodemon: 2.0.15
+  shared: link:../shared
 
 packages:
 
