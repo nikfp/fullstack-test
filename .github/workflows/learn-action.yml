@@ -96,7 +96,7 @@ jobs:
         working-directory: ./packages/client
 
       - name: deploy site to Netlify
-        run: pnpm exec netlify deploy --id ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: pnpm exec netlify deploy --site ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
         working-directory: ./packages/client
 
       # - name: Deploy production to Netlify
