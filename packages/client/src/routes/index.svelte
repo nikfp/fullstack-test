@@ -4,6 +4,12 @@ import sayMyName from 'shared';
 
   const srvaddr = process.env.API_SRV;
 
+  if(srvaddr) {
+    console.log(`server address is: ${srvaddr}`) 
+  } else {
+    console.log("server address did not load correctly");
+  };
+
   let time = "not yet defined"
 
   onMount(async () => {
