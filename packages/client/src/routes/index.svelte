@@ -16,7 +16,7 @@ import sayMyName from 'shared';
 </script>
 
 <h1 class="red">Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<p style="color: green">If I see this in production, it was a hell of a slog to get here</p>
 
 <hr>
 <h2 class="red">Time is: {time}</h2>
