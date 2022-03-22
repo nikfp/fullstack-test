@@ -84,7 +84,7 @@ jobs:
         working-directory: ./packages/client
 
       - name: Build client library
-        run: pnpm build
+        run: pnpm exec netlify build
         working-directory: ./packages/client
 
       - name: confirm directories
