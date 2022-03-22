@@ -1,5 +1,5 @@
 # Your workflow name.
-name: Deploy to heroku.
+name: Deploy to heroku and netlify
 
 # Run workflow on every push to master branch.
 on:
@@ -8,6 +8,7 @@ on:
     paths:
       - "packages/server/**"
       - "./Dockerfile"
+      - "./.github/**"
   workflow_dispatch:
     branches: [main]
 
