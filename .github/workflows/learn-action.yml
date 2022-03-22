@@ -92,7 +92,6 @@ jobs:
 
       - name: Deploy production to Netlify
         uses: nwtgck/actions-netlify@v1.2
-        working-directory: .
         with:
           publish-dir: "./packages/client/.netlify"
         env:
