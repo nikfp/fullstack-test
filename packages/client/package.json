@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "API_SRV=http://localhost:8000 svelte-kit dev",
 		"build": "svelte-kit build",
+		"pbuild": "",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
