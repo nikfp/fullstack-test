@@ -83,8 +83,12 @@ jobs:
         run: pnpm install
         working-directory: ./packages/client
 
+      - name: Install netlify CLI
+        run: pnpm add -D netlify-cli
+        working-directory: ./packages/client
+
       - name: Build client library
-        run: pnpm exec netlify build
+        run: pnpm exec netlify build --offline
         working-directory: ./packages/client
 
       - name: confirm directories
@@ -94,7 +98,7 @@ jobs:
       - name: Deploy production to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: "./packages/client/build"
+          publish-dir: "./packages/client/.netlify"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

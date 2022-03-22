@@ -1,53 +1,23 @@
 {
   "0 debug pnpm:scope": {
-    "selected": 3,
-    "total": 3
+    "selected": 1
   },
-  "1 debug pnpm:lifecycle": {
-    "depPath": "/home/nikp/Documents/Github/fullstack_test/packages/client",
-    "optional": false,
-    "script": "svelte-kit dev",
-    "stage": "dev",
-    "wd": "/home/nikp/Documents/Github/fullstack_test/packages/client"
-  },
-  "2 debug pnpm:lifecycle": {
-    "depPath": "/home/nikp/Documents/Github/fullstack_test/packages/server",
-    "optional": false,
-    "script": "PORT=8000 nodemon app.js",
-    "stage": "dev",
-    "wd": "/home/nikp/Documents/Github/fullstack_test/packages/server"
-  },
-  "3 debug pnpm:lifecycle": {
-    "depPath": "/home/nikp/Documents/Github/fullstack_test/packages/client",
-    "line": "sh: 1: svelte-kit: not found",
-    "stage": "dev",
-    "stdio": "stderr",
-    "wd": "/home/nikp/Documents/Github/fullstack_test/packages/client"
-  },
-  "4 info pnpm": {
+  "1 info pnpm": {
     "err": {
       "name": "Error",
-      "message": "client@0.0.1 dev: `svelte-kit dev`\nspawn ENOENT",
-      "code": "ELIFECYCLE",
-      "stack": "Error: client@0.0.1 dev: `svelte-kit dev`\nspawn ENOENT\n    at ChildProcess.<anonymous> (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:92200:22)\n    at ChildProcess.emit (node:events:527:28)\n    at maybeClose (node:internal/child_process:1090:16)\n    at Socket.<anonymous> (node:internal/child_process:449:11)\n    at Socket.emit (node:events:527:28)\n    at Pipe.<anonymous> (node:net:709:12)"
+      "message": "not found: netlify",
+      "code": "ENOENT",
+      "stack": "Error: not found: netlify\n    at getNotFoundError (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:41576:51)\n    at Function.whichSync [as sync] (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:41653:13)\n    at getCommandAbsolutePathSync (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43218:44)\n    at default_1 (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43227:32)\n    at /usr/lib/node_modules/pnpm/dist/pnpm.cjs:178035:39"
     }
   },
-  "5 error pnpm": {
-    "code": "ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL",
-    "errno": "ENOENT",
-    "syscall": "spawn",
-    "file": "sh",
-    "pkgid": "client@0.0.1",
-    "stage": "dev",
-    "script": "svelte-kit dev",
-    "pkgname": "client",
-    "prefix": "/home/nikp/Documents/Github/fullstack_test/packages/client",
+  "2 error pnpm": {
+    "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+    "prefix": "/home/nikp/Documents/Github/fullstack_test",
     "err": {
       "name": "pnpm",
-      "message": "client@0.0.1 dev: `svelte-kit dev`\nspawn ENOENT",
-      "code": "ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL",
-      "stack": "Error: client@0.0.1 dev: `svelte-kit dev`\nspawn ENOENT\n    at ChildProcess.<anonymous> (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:92200:22)\n    at ChildProcess.emit (node:events:527:28)\n    at maybeClose (node:internal/child_process:1090:16)\n    at Socket.<anonymous> (node:internal/child_process:449:11)\n    at Socket.emit (node:events:527:28)\n    at Pipe.<anonymous> (node:net:709:12)"
+      "message": "not found: netlify",
+      "code": "ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL",
+      "stack": "Error: not found: netlify\n    at getNotFoundError (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:41576:51)\n    at Function.whichSync [as sync] (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:41653:13)\n    at getCommandAbsolutePathSync (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43218:44)\n    at default_1 (/usr/lib/node_modules/pnpm/dist/pnpm.cjs:43227:32)\n    at /usr/lib/node_modules/pnpm/dist/pnpm.cjs:178035:39"
     }
-  },
-  "6 warn pnpm:global": " Local package.json exists, but node_modules missing, did you mean to install?"
+  }
 }
