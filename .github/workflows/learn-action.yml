@@ -5,12 +5,12 @@ name: Deploy to heroku and netlify
 on:
   push:
     branches: [main]
-    paths:
-      - "packages/server/**"
-      - "packages/shared/**"
-      - "packages/client/**"
-      - "./Dockerfile"
-      - "./.github/**"
+    # paths:
+    #   - "packages/server/**"
+    #   - "packages/shared/**"
+    #   - "packages/client/**"
+    #   - "./Dockerfile"
+    #   - "./.github/**"
   workflow_dispatch:
     branches: [main]
 
@@ -77,6 +77,10 @@ jobs:
       - name: Build shared library
         run: pnpm build
         working-directory: ./packages/shared
+
+      - name: Install shared project to client
+        run: pnpm install
+        working-directory: ./packages/client
 
       - name: Build client library
         run: pnpm build
