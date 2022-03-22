@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm build || npm install -g pnpm && pnpm build"
+  command = "pnpm build || (npm install -g pnpm && pnpm install && pnpm build)"
   publish = "build"
 
 [build.environment]
