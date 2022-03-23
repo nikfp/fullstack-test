@@ -62,13 +62,13 @@ jobs:
           process_type: web
   ### ⬆ IMPORTANT PART ⬆ ###
 
-  # publishToVercel:
-  #   name: Publish To vercel
-  #   runs-on: ubuntu-latest
-  #   needs: [build]
-  #   steps:
-  #     - name: Trigger build with Vercel build hook
-  #       run: echo < curl ${{ secrets.VERCEL_MAIN_DEPLOY_HOOK }}
+  publishToVercel:
+    name: Publish To vercel
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Trigger build with Vercel build hook
+        run: curl ${{ secrets.VERCEL_MAIN_DEPLOY_HOOK }}
 
   # publishToNetlify:
   #   name: Publish To Netlify
