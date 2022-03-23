@@ -69,7 +69,7 @@ jobs:
     needs: [build]
     steps:
       - name: Trigger build with Vercel build hook
-        run: curl ${{ secrets.VERCEL_MAIN_DEPLOY_HOOK }}
+        run: echo < curl ${{ secrets.VERCEL_MAIN_DEPLOY_HOOK }}
 
   # publishToNetlify:
   #   name: Publish To Netlify
