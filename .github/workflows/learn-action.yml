@@ -62,48 +62,48 @@ jobs:
           process_type: web
   #
   ### ⬆ IMPORTANT PART ⬆ ###
-  publishToNetlify:
-    name: Publish To Netlify
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
+  # publishToNetlify:
+  #   name: Publish To Netlify
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v1
 
-      - name: Install PNPM
-        run: npm i -g pnpm
+  #     - name: Install PNPM
+  #       run: npm i -g pnpm
 
-      - name: Install dependencies
-        run: pnpm install
+  #     - name: Install dependencies
+  #       run: pnpm install
 
-      - name: Build shared library
-        run: pnpm build
-        working-directory: ./packages/shared
+  #     - name: Build shared library
+  #       run: pnpm build
+  #       working-directory: ./packages/shared
 
-      - name: Install shared project to client
-        run: pnpm install
-        working-directory: ./packages/client
+  #     - name: Install shared project to client
+  #       run: pnpm install
+  #       working-directory: ./packages/client
 
-      - name: Install netlify CLI
-        run: pnpm add -D netlify-cli
-        working-directory: ./packages/client
+  #     - name: Install netlify CLI
+  #       run: pnpm add -D vercel
+  #       working-directory: ./packages/client
 
-      - name: Build client library
-        run: pnpm exec netlify build --offline
-        working-directory: ./packages/client
+  #     - name: Build client library
+  #       run: pnpm exec netlify build --offline
+  #       working-directory: ./packages/client
 
-      - name: confirm directories
-        run: ls -al
-        working-directory: ./packages/client
+  #     - name: confirm directories
+  #       run: ls -al
+  #       working-directory: ./packages/client
 
-      - name: deploy site to Netlify
-        run: pnpm exec netlify deploy --site ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        working-directory: ./packages/client
+  #     - name: deploy site to Netlify
+  #       run: pnpm exec netlify deploy --site ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  #       working-directory: ./packages/client
 
-      # - name: Deploy production to Netlify
-      #   uses: nwtgck/actions-netlify@v1.2
-      #   with:
-      #     publish-dir: "./packages/client/build"
-      #     production-deploy: true
-      #   env:
-      #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-      #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  # - name: Deploy production to Netlify
+  #   uses: nwtgck/actions-netlify@v1.2
+  #   with:
+  #     publish-dir: "./packages/client/build"
+  #     production-deploy: true
+  #   env:
+  #     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  #     NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
