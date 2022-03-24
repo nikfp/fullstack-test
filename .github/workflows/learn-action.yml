@@ -11,8 +11,8 @@ on:
     #   - "packages/client/**"
     #   - "./Dockerfile"
     #   - "./.github/**"
-  workflow_dispatch:
-    branches: [main]
+  # workflow_dispatch:
+  #   branches: [main]
 
 # Your workflows jobs.
 jobs:
