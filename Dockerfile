@@ -8,7 +8,7 @@ COPY packages/shared/package.json .
 
 RUN pnpm install
 
-COPY packages/shared/src .
+COPY packages/shared/src ./src
 
 COPY packages/shared/tsconfig.json .
 
