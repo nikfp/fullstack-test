@@ -1,6 +1,6 @@
 <script lang="ts">
 import { onMount } from "svelte";
-// import sayMyName from 'shared';
+import sayMyName from 'shared';
 
   const srvaddr = process.env.API_SRV;
 
@@ -16,7 +16,7 @@ import { onMount } from "svelte";
     const result = await fetch(srvaddr);
     const body = await result.json();
     console.log(body);
-    // console.log(sayMyName());
+    console.log(sayMyName());
     time = body.timestamp;
   })
 </script>
@@ -27,7 +27,7 @@ import { onMount } from "svelte";
 <hr>
 <h2 class="red">Time is: {time}</h2>
 <hr>
-<p>This was a change that Shaye made</p>
+<p>This was a change that Nik and Shaye made</p>
 
 <style>
   .red {
