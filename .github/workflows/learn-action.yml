@@ -52,7 +52,7 @@ jobs:
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           dockerfile_directory: ./
           dockerfile_name: Dockerfile
-          docker_options: "--cache-from type=local,src=/tmp/.buildx-cache, --cache-to type=local,dest=/tmp/.buildx-cache-new"
+          docker_options: "--cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new"
           process_type: web
 
       - name: Move cache
