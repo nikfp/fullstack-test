@@ -10,6 +10,8 @@ RUN pnpm install
 
 COPY packages/shared/src .
 
+COPY packages/shared/tsconfig.json .
+
 RUN pnpm build
 
 WORKDIR /app
