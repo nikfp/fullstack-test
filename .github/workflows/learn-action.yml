@@ -48,7 +48,7 @@ jobs:
           --cache-to type=local,dest=/tmp/.buildx-cache-new
 
       - name: list local containers
-        run: docker ps -a
+        run: docker image ls
 
       #
       # - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
