@@ -5,12 +5,12 @@ name: Deploy to heroku and netlify
 on:
   push:
     branches: [main]
-    # paths:
-    #   - "packages/server/**"
-    #   - "packages/shared/**"
-    #   - "packages/client/**"
-    #   - "./Dockerfile"
-    #   - "./.github/**"
+    paths:
+      - "packages/server/**"
+      - "packages/shared/**"
+      - "packages/client/**"
+      - "./Dockerfile"
+      - "./.github/**"
   # workflow_dispatch:
   #   branches: [main]
 
