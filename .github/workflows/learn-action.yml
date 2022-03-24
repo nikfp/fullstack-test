@@ -43,7 +43,7 @@ jobs:
         run: npm i -g pnpm
 
       - name: Install dependencies
-        run: pnpm Install
+        run: pnpm install
         working-directory: ./packages/client
 
       - name: Build client app
