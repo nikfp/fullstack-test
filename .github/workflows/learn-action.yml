@@ -37,34 +37,30 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Log in to Heroku
-        run: |
-          echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=${{ secrets.HEROKU_EMAIL }} registry.heroku.com --password-stdin
+      # - name: Log in to Heroku
+      #   run: |
+      #     echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=${{ secrets.HEROKU_EMAIL }} registry.heroku.com --password-stdin
 
-      - name: Build Docker container
-        run: |
-          docker build . --tag registry.heroku.com/${{secrets.HEROKU_APP_NAME}}/web \
-          --cache-from type=local,src=/tmp/.buildx-cache \
-          --cache-to type=local,dest=/tmp/.buildx-cache-new
-        with:
-          context: .
+      # - name: Build Docker container
+      #   run: |
+      #     docker build . --tag registry.heroku.com/${{secrets.HEROKU_APP_NAME}}/web \
+      #     --cache-from type=local,src=/tmp/.buildx-cache \
+      #     --cache-to type=local,dest=/tmp/.buildx-cache-new
 
-      - name: list local containers
-        run: docker image ls
-        with:
-          context: .
+      # - name: list local containers
+      #   run: docker image ls
 
       #
-      # - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
-      #   uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
-      #   with:
-      #     email: ${{ secrets.HEROKU_EMAIL }}
-      #     heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-      #     heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-      #     dockerfile_directory: ./
-      #     dockerfile_name: Dockerfile
-      #     docker_options: "--cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new"
-      #     process_type: web
+      - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
+        uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
+        with:
+          email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          dockerfile_directory: ./
+          dockerfile_name: Dockerfile
+          docker_options: "--cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new"
+          process_type: web
 
       - name: Move cache
         run: |
