@@ -41,14 +41,9 @@ jobs:
         run: |
           echo ${{ secrets.HEROKU_API_KEY }} | docker login --username=${{ secrets.HEROKU_EMAIL }} registry.heroku.com --password-stdin
 
-      - name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: user/app:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new
+      - name: Build container
+        run: |
+          /usr/bin/docker buildx build --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new --iidfile /tmp/docker-build-push-3ltn7s/iidfile --tag registry.heroku.com/${{secrets.HEROKU_APP_NAME}}/web:latest --metadata-file /tmp/docker-build-push-3ltn7s/metadata-file --push .
 
       - name: Release container
         run: docker image ls -a
