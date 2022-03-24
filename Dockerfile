@@ -8,7 +8,9 @@ COPY packages/shared/package.json .
 
 RUN pnpm install
 
-COPY packages/shared/index.js .
+COPY packages/shared/src .
+
+RUN pnpm build
 
 WORKDIR /app
 
