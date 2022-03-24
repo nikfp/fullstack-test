@@ -9,7 +9,7 @@ on:
       - "packages/server/**"
       - "packages/shared/**"
       - "packages/client/**"
-      - "./Dockerfile"
+      - "Dockerfile"
       - ".github/**"
   workflow_dispatch:
     branches: [main]
