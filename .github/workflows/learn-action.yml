@@ -23,10 +23,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up docker layer cache
-        uses: satackey/action-docker-layer-caching@v0.0.11
-        # Ignore the failure of a step and avoid terminating the job.
-        continue-on-error: true
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
 
       - name: Build, Push and Release a Docker container to Heroku. # Your custom step name
         uses: gonuit/heroku-docker-deploy@v1.3.3 # GitHub action name (leave it as it is).
@@ -36,32 +42,36 @@ jobs:
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           dockerfile_directory: ./
           dockerfile_name: Dockerfile
-          docker_options: "--no-cache"
+          docker_options: "--cache-from: type=local,src=/tmp/.buildx-cache, --cache-to: type=local,dest=/tmp/.buildx-cache-new"
           process_type: web
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build_server_and_deploy]
-    steps:
-      - uses: actions/checkout@v2
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
 
-      - name: Install PNPM
-        run: npm i -g pnpm
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: [build_server_and_deploy]
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: pnpm install
-        working-directory: ./packages/client
+  #     - name: Install PNPM
+  #       run: npm i -g pnpm
 
-      - name: Build client app
-        run: pnpm build
-        working-directory: ./packages/client
-      #  your build commands
-      # - run: |
-      #    ng build --prod
-      - uses: amondnet/vercel-action@v20 #deploy
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          vercel-args: "--prod" #Optional
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}} #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
-          # working-directory: ./packages/client
+  #     - name: Install dependencies
+  #       run: pnpm install
+  #       working-directory: ./packages/client
+
+  #     - name: Build client app
+  #       run: pnpm build
+  #       working-directory: ./packages/client
+  #     #  your build commands
+  #     # - run: |
+  #     #    ng build --prod
+  #     - uses: amondnet/vercel-action@v20 #deploy
+  #       with:
+  #         vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+  #         vercel-args: "--prod" #Optional
+  #         vercel-org-id: ${{ secrets.VERCEL_ORG_ID}} #Required
+  #         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
