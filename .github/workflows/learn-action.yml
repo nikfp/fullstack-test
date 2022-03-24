@@ -43,7 +43,7 @@ jobs:
 
       - name: Build container
         run: |
-          /usr/bin/docker buildx build --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new --iidfile /tmp/docker-build-push-3ltn7s/iidfile --tag registry.heroku.com/${{secrets.HEROKU_APP_NAME}}/web:latest --metadata-file /tmp/docker-build-push-3ltn7s/metadata-file --push .
+          /usr/bin/docker buildx build --cache-from type=local,src=/tmp/.buildx-cache --cache-to type=local,dest=/tmp/.buildx-cache-new --tag registry.heroku.com/${{secrets.HEROKU_APP_NAME}}/web:latest --push .
 
       - name: Release container
         run: docker image ls -a
