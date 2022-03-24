@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "API_SRV=http://localhost:8000 svelte-kit dev",
-		"build": "pnpm install && svelte-kit build",
-		"prebuild": "cd ../shared && pnpm install",
+		"build": "pnpm prebuild && pnpm install && svelte-kit build",
+		"prebuild": "cd ../shared && pnpm build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",
